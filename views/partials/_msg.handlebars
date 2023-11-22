@@ -1,0 +1,27 @@
+<!--Essas duas variáveis 'success_msg' e 'error_msg' estão vindo do nosso registro
+de variáveis globais, em que eu utilizei o 'locals' lá em 'app.js'-->
+{{#if success_msg}}
+        <div id="msgSucesso" class="alert alert-success">{{success_msg}}</div>
+    <script>
+
+        let msg = document.querySelector('div#msgSucesso')
+
+        //Utilizo desse setTimeout para remover a mensagem de sucesso da tela após alguns segundos 
+        setTimeout(() => {
+            msg.parentNode.removeChild(msg)
+        }, 2000)
+
+    </script>
+    
+{{/if}}
+{{#if error_msg}}
+    <div id="msgErro" class="alert alert-danger">{{error_msg}}</div>
+    <script>
+
+        {{!-- let msg = document.querySelector('div#msgErro')
+        setTimeout(() => {
+            msg.parentNode.removeChild(msg)
+        }, 2000) --}}
+    </script>
+
+{{/if}}

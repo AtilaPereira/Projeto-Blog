@@ -1,0 +1,25 @@
+<h2>Lista de postagens: </h2>
+<hr>
+<a href="/admin/postagens/add"><button class="btn btn-success">Nova Postagem</button></a>
+
+{{#each postagens}}
+    <div class="card mt-4">
+        <div class="card-body mt-05">
+            <h4>{{titulo}}</h4>
+            <small>Descrição: {{descricao}}</small>
+            <p>Conteúdo: {{conteudo}}</p>
+            <small>Categoria: {{categoria.nome}}</small><br> <!--Aqui eu posso chamar a propriedade nome por que eu usei o '.populate()'-->
+            <small>Data de criação: {{#formatDate date}}{{/formatDate}}</small><br>
+            <a href="/admin/postagens/edit/{{_id}}"><button class="btn btn-success btn-sm mt-4">Editar postagem</button></a>
+
+            <form action="/admin/postagens/deletar" method="post">
+
+            <input type="hidden" name="id" value="{{_id}}">
+            <button type="submit" class="btn btn-danger btn-sm mt-2">Deletar postagem</button>
+            </form>
+     
+        </div>
+    </div>
+{{else}}
+    <h4 class="mt-3">Nenhuma postagem registrada!</h4>
+{{/each}}

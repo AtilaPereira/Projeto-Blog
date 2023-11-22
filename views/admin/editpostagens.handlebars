@@ -1,0 +1,38 @@
+{{#each erros}}<!--Para cada erro dentro do meu array de erros vai ser printado as mensagens de erro contida nele-->
+    <div class="alert alert-danger">{{texto}}</div>
+{{else}}
+
+{{/each}}
+<h3>Editar postagem:</h3>
+<div class="card">
+    <div class="card-body">
+        <form action="/admin/postagens/edit" method="post">
+
+        <input type="hidden" name="id" value="{{postagem._id}}">
+
+            <label for="titulo">Título: </label>
+                <input type="text" id="titulo" name="titulo" placeholder="Título da postagem" class="form-control" value="{{postagem.titulo}}" >
+            <label for="slug">Slug: </label>
+                <input type="text" id="slug" name="slug" placeholder="Slug da postagem" class="form-control" value="{{postagem.slug}}">
+            <label for="descricao">Descrição: </label>
+                <input type="text" id="descricao" name="descricao" placeholder="Descrição da postagem" class="form-control" value="{{postagem.descricao}}">
+            <label for="conteudo">Conteúdo: </label>
+
+            <textarea name="conteudo" id="conteudo" placeholder="Conteúdo da postagem" class="form-control">{{postagem.conteudo}}</textarea>
+
+            <label for="categoria">Categoria: </label>
+            <select name="categoria" id="categoria" class="form-select">
+
+                {{#each categorias}}
+                    <option value="{{_id}}">{{nome}}</option>
+                {{else}}
+                    <option value="0">Nenhuma categoria registrada</option>
+                    <!--Quando não tiver nenhuma categoria registrada é importante que eu coloque o valor como 0-->
+                {{/each}}
+                
+            </select>
+
+            <button class="btn btn-success mt-3" type="submit">Editar postagem</button>
+        </form>
+    </div>
+</div>
